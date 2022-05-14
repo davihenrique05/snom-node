@@ -39,7 +39,8 @@ app.use(express_1.default.json());
 //Default route
 app.get('/', (req, res) => {
     res.send({
-        'Yngredh': 'Saudades'
+        'Nome': 'Não interessa',
+        'Idade': 'Menos ainda'
     });
 });
 //Starting server
