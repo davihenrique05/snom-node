@@ -32,17 +32,31 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const routes_1 = require("./routes");
-//App config
 dotenv.config();
+//App config
 const app = (0, express_1.default)();
-const port = process.env.PORT;
 app.use((0, cors_1.default)());
 app.use((0, helmet_1.default)());
 app.use(express_1.default.json());
+app.use(routes_1.routes);
 //Default route
 app.get('/', (req, res) => {
-    res.send('Uhuu');
+    res.send({
+        'Nome': 'Ui',
+        'Idade': 'Ui'
+    });
 });
-app.use('/api', routes_1.routes);
+// const AppDataSource = new DataSource({
+//     type: "mysql",
+//     host: process.env.CLEARDB_HOST,
+//     port: 3306,
+//     username: process.env.CLEARDB_USERNAME,
+//     password: process.env.CLEARDB_PASSWORD,
+//     database: process.env.CLEARDB_DATABASE,
+//     entities: [ ],
+//     synchronize: true,
+//     logging: false
+// })
 //Starting server
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening to the port ${port}`));

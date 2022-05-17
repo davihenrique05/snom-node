@@ -22,27 +22,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppDataSource = void 0;
+const typeorm_1 = require("typeorm");
 const dotenv = __importStar(require("dotenv"));
-require("reflect-metadata");
-const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
-const helmet_1 = __importDefault(require("helmet"));
-const routes_1 = require("./routes");
-//App config
+const Permission_1 = require("./model/Permission");
+const User_1 = require("./model/User");
 dotenv.config();
-const app = (0, express_1.default)();
-const port = process.env.PORT;
-app.use((0, cors_1.default)());
-app.use((0, helmet_1.default)());
-app.use(express_1.default.json());
-//Default route
-app.get('/', (req, res) => {
-    res.send('Uhuu');
+const AppDataSource = new typeorm_1.DataSource({
+    type: "mysql",
+    connectorPackage: "mysql2",
+    host: process.env.JAWSDB_HOST,
+    port: 3306,
+    username: process.env.JAWSDB_USERNAME,
+    password: process.env.JAWSDB_PASSWORD,
+    database: process.env.JAWSDB_DATABASE,
+    entities: [User_1.User, Permission_1.Permission],
+    synchronize: true,
+    logging: false
 });
-app.use('/api', routes_1.routes);
-//Starting server
-app.listen(port, () => console.log(`Listening to the port ${port}`));
+exports.AppDataSource = AppDataSource;
+AppDataSource.initialize()
+    .then(() => {
+    console.log("Data Source has been initialized!");
+})
+    .catch((err) => {
+    console.error("Error during Data Source initialization", err);
+});
