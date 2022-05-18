@@ -1,25 +1,24 @@
 import * as dotenv from "dotenv";
+import "reflect-metadata";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-dotenv.config();
+import { routes } from "./routes";
 
 //App config
+dotenv.config();
 const app = express();
+const port = process.env.PORT;
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
+
 //Default route
 app.get('/', (req, res) =>{
-    res.send(
-        {
-            'Nome' : 'Não interessa',
-            'Idade' : 'Menos ainda'
-        }
-    );
+    res.send('Uhuu');
 });
 
+app.use('/api', routes);
 //Starting server
-const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening to the port ${port}`));
