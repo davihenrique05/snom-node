@@ -19,6 +19,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const userService = new UserService_1.UserService();
             const user = yield userService.getUser();
+            console.log(user);
             res.json(user);
         });
     }
@@ -27,6 +28,7 @@ class UserController {
             const { id } = req.params;
             const userService = new UserService_1.UserService();
             const user = yield userService.getUser(parseInt(id));
+            console.log(user);
             res.json(user);
         });
     }

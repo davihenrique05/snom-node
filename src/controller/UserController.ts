@@ -9,6 +9,7 @@ export class UserController {
     async getAllUsers(req: Request, res: Response) {
         const userService = new UserService();
         const user = await userService.getUser();
+        console.log(user)
         res.json(user);
     }
     async getUserById(req: Request, res: Response) {
@@ -16,6 +17,7 @@ export class UserController {
         
         const userService = new UserService();
         const user = await userService.getUser(parseInt(id));
+        console.log(user)
         res.json(user);
     }
     public getUserEmblems(req: Request, res: Response) {

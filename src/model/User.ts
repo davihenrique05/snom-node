@@ -1,3 +1,4 @@
+import { type } from "os";
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import { Permission } from "./Permission";
 
@@ -44,6 +45,6 @@ export class User {
     })
     icon: string
 
-    @ManyToOne(() => Permission, (permission) => Permission)
+    @ManyToOne(type => Permission, permission => permission.users, { eager: true })
     permission: Permission
 }
