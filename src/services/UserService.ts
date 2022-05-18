@@ -10,9 +10,7 @@ export class UserService {
 
         return UserRepository.find({
             where: { id },
-            relations: {
-                permission: true,
-            }
+            relations: [ 'permission' ]
         })
     };
     public updateUser() :void{};

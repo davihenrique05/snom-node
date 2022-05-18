@@ -10,9 +10,7 @@ class UserService {
     getUser(id) {
         return UserRepository_1.UserRepository.find({
             where: { id },
-            relations: {
-                permission: true,
-            }
+            relations: ['permission']
         });
     }
     ;

@@ -23,7 +23,7 @@ __decorate([
     __metadata("design:type", String)
 ], Permission.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => User_1.User, (user) => user.permission),
+    (0, typeorm_1.OneToMany)(type => User_1.User, user => user.permission),
     __metadata("design:type", Array)
 ], Permission.prototype, "users", void 0);
 Permission = __decorate([

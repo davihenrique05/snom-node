@@ -9,6 +9,6 @@ export class Permission {
     @Column()
     description: string
 
-    @OneToMany(()=> User, (user) => user.permission)
+    @OneToMany(type => User, user => user.permission)
     users : User[]
 }
