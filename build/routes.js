@@ -10,9 +10,7 @@ routes.use(function timeLog(req, res, next) {
     console.log('Time: ' + Date.now() + ' route: ' + req.url);
     next();
 });
-routes.get('/user', userController.getAllUsers);
-routes.get('/user/:id', userController.getUserById);
-routes.get('/user/login', userController.login);
-routes.put('/user/update', userController.updateUser);
-routes.post('/user', userController.createUser);
-routes.delete('/user', userController.deleteUser);
+routes.get('/', userController.getUser);
+routes.put('/', userController.updateUser);
+routes.post('/', userController.createUser);
+routes.delete('/', userController.deleteUser);

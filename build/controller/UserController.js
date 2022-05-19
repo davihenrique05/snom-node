@@ -12,37 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const UserService_1 = require("../services/UserService");
 class UserController {
-    login(req, res) {
-        return res.send('teste');
+    createUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return res.send('teste');
+        });
     }
-    getAllUsers(req, res) {
+    getUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userService = new UserService_1.UserService();
             const user = yield userService.getUser();
-            console.log(user);
             res.json(user);
         });
-    }
-    getUserById(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const userService = new UserService_1.UserService();
-            const user = yield userService.getUser(parseInt(id));
-            console.log(user);
-            res.json(user);
-        });
-    }
-    getUserEmblems(req, res) {
-        return res.send('teste');
-    }
-    createUser(req, res) {
-        return res.send('teste');
     }
     updateUser(req, res) {
-        return res.send('teste');
+        return __awaiter(this, void 0, void 0, function* () {
+            return res.send('teste');
+        });
     }
     deleteUser(req, res) {
-        return res.send('teste');
+        return __awaiter(this, void 0, void 0, function* () {
+            return res.send('teste');
+        });
     }
 }
 exports.UserController = UserController;

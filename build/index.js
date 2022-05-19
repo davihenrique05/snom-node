@@ -43,6 +43,6 @@ app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.send('Uhuu');
 });
-app.use('/api', routes_1.routes);
+app.use('/api/user', routes_1.routes);
 //Starting server
 app.listen(port, () => console.log(`Listening to the port ${port}`));
