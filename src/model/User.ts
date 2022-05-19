@@ -15,6 +15,11 @@ export class User {
     @Column({
         length: 150,
     })
+    name: string
+
+    @Column({
+        length: 150,
+    })
     email: string
 
     @Column({
