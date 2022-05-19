@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const UserService_1 = require("../services/UserService");
+const ErrorMessage_1 = require("../utils/ErrorMessage");
 class UserController {
     createUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -20,8 +21,15 @@ class UserController {
     getUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userService = new UserService_1.UserService();
-            const user = yield userService.getUser();
-            res.json(user);
+            try {
+                const user = yield userService.getUser(req.query);
+                res.json(user);
+            }
+            catch (err) {
+                console.log(err);
+                res.statusCode = 404;
+                res.send((0, ErrorMessage_1.defaultError)());
+            }
         });
     }
     updateUser(req, res) {

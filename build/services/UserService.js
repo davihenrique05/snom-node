@@ -7,9 +7,14 @@ class UserService {
     ;
     getConqueredEmblemCount() { }
     ;
-    getUser(id) {
+    getUser(filter) {
+        const filterId = filter.id ? parseInt(filter.id) : undefined;
         return UserRepository_1.UserRepository.find({
-            where: { id },
+            where: {
+                id: filterId,
+                name: filter.name,
+                email: filter.email,
+            },
             relations: ['permission']
         });
     }

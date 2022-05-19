@@ -29,6 +29,12 @@ __decorate([
         length: 150,
     }),
     __metadata("design:type", String)
+], User.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        length: 150,
+    }),
+    __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
     (0, typeorm_1.Column)({
