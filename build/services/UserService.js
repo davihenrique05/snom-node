@@ -19,7 +19,11 @@ class UserService {
         });
     }
     ;
-    updateUser() { }
+    updateUser(user) {
+        if (!user.id)
+            throw new Error();
+        return UserRepository_1.UserRepository.save(user);
+    }
     ;
     createUser() { }
     ;

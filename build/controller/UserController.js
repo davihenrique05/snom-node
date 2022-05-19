@@ -28,13 +28,22 @@ class UserController {
             catch (err) {
                 console.log(err);
                 res.statusCode = 404;
-                res.send((0, ErrorMessage_1.defaultError)());
+                res.send((0, ErrorMessage_1.defaultError)({}));
             }
         });
     }
     updateUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            return res.send('teste');
+            const userService = new UserService_1.UserService();
+            try {
+                yield userService.updateUser(req.body);
+                res.sendStatus(200);
+            }
+            catch (err) {
+                console.log(err);
+                res.statusCode = 404;
+                res.send((0, ErrorMessage_1.defaultError)({}));
+            }
         });
     }
     deleteUser(req, res) {

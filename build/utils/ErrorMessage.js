@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.defaultError = void 0;
-const defaultError = (statusCode, message) => {
+const defaultError = (params) => {
     return {
-        status: statusCode || 404,
-        message: message || 'Something went wrong'
+        status: params.statusCode || 404,
+        message: params.message || 'Something went wrong'
     };
 };
 exports.defaultError = defaultError;
