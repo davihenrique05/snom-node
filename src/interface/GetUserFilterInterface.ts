@@ -1,4 +1,4 @@
-export type GetUserFilter = {
+export type GetUserFilterInterface = {
     id? : string
     name? : string,
     email? : string
