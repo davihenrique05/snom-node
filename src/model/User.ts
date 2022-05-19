@@ -29,6 +29,7 @@ export class User {
 
     @Column({
         length: 100,
+        nullable: true
     })
     nickname: string
 

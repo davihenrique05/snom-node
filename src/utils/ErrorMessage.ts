@@ -1,7 +1,11 @@
+export interface IErrorParams {
+    statusCode?:number, 
+    message?:string
+}
 
-export const defaultError = (statusCode?:number, message?:string) => {
+export const defaultError = (params: IErrorParams) => {
     return{
-        status: statusCode || 404,
-        message: message || 'Something went wrong'
+        status: params.statusCode || 404,
+        message: params.message || 'Something went wrong'
     }
 }
