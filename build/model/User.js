@@ -72,6 +72,10 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "icon", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], User.prototype, "permission_id", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(type => Permission_1.Permission, permission => permission.users, { eager: true }),
     __metadata("design:type", Permission_1.Permission)
 ], User.prototype, "permission", void 0);

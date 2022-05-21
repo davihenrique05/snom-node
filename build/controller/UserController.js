@@ -15,14 +15,22 @@ const ErrorMessage_1 = require("../utils/ErrorMessage");
 class UserController {
     createUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            return res.send('teste');
+            try {
+                yield UserService_1.UserService.createUser(req.body);
+                res.sendStatus(200);
+            }
+            catch (err) {
+                console.log(err);
+                res.statusCode = 404;
+                res.send((0, ErrorMessage_1.defaultError)({}));
+            }
         });
     }
     getUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userService = new UserService_1.UserService();
             try {
-                const user = yield userService.getUser(req.query);
+                const user = yield UserService_1.UserService.getUser(req.query);
                 res.json(user);
             }
             catch (err) {
@@ -36,7 +44,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const userService = new UserService_1.UserService();
             try {
-                yield userService.updateUser(req.body);
+                yield UserService_1.UserService.updateUser(req.body);
                 res.sendStatus(200);
             }
             catch (err) {

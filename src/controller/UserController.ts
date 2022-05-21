@@ -7,14 +7,21 @@ import { defaultError } from '../utils/ErrorMessage';
 
 export class UserController {
 
-    async createUser(req: Request, res: Response) {
-        return res.send('teste');
+    async createUser(req: TypedRequestBody<Partial<User>>, res: Response) {
+        try{
+            await UserService.createUser(req.body);
+            res.sendStatus(200);
+        }catch(err){
+            console.log(err);
+            res.statusCode = 404;
+            res.send(defaultError({}));
+        }
     }
 
     async getUser(req: TypedRequestQuery<IGetUserFilter>, res: Response) {
         const userService = new UserService();
         try{
-            const user = await userService.getUser(req.query);
+            const user = await UserService.getUser(req.query);
             res.json(user);
         }catch(err){
             console.log(err);
@@ -26,7 +33,7 @@ export class UserController {
     async updateUser(req: TypedRequestBody<Partial<User>>, res: Response) {
         const userService = new UserService();
         try{
-            await userService.updateUser(req.body);
+            await UserService.updateUser(req.body);
             res.sendStatus(200);
         }catch(err){
             console.log(err);
