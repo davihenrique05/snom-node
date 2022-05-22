@@ -19,7 +19,6 @@ export class UserController {
     }
 
     async getUser(req: TypedRequestQuery<IGetUserFilter>, res: Response) {
-        const userService = new UserService();
         try{
             const user = await UserService.getUser(req.query);
             res.json(user);
@@ -31,7 +30,6 @@ export class UserController {
     }
 
     async updateUser(req: TypedRequestBody<Partial<User>>, res: Response) {
-        const userService = new UserService();
         try{
             await UserService.updateUser(req.body);
             res.sendStatus(200);

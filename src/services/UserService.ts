@@ -3,7 +3,7 @@ import { User } from "../model/User";
 import { UserRepository } from "../repository/UserRepository";
 
 
-export class UserService {
+export abstract class UserService {
 
     public login() :void{};
     public getConqueredEmblemCount() :void{};
