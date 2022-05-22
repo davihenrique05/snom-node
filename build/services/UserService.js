@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
+const Permission_1 = require("../model/Permission");
 const UserRepository_1 = require("../repository/UserRepository");
 class UserService {
     login() { }
@@ -34,8 +35,9 @@ class UserService {
         user.isUserActive = true;
         user.experience = 0;
         user.icon = "user_pic001";
-        user.permission_id = 3;
-        return UserRepository_1.UserRepository.save(user);
+        user.permission = new Permission_1.Permission();
+        user.permission.id = 3;
+        return UserRepository_1.UserRepository.insert(user);
     }
     ;
     static deleteUser() { }

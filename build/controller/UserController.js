@@ -28,7 +28,6 @@ class UserController {
     }
     getUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userService = new UserService_1.UserService();
             try {
                 const user = yield UserService_1.UserService.getUser(req.query);
                 res.json(user);
@@ -42,7 +41,6 @@ class UserController {
     }
     updateUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userService = new UserService_1.UserService();
             try {
                 yield UserService_1.UserService.updateUser(req.body);
                 res.sendStatus(200);

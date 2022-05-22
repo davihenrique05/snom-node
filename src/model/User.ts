@@ -51,9 +51,6 @@ export class User {
     })
     icon: string
 
-    @Column()
-    permission_id: number
-
     @ManyToOne(type => Permission, permission => permission.users, { eager: true })
     permission: Permission
 }

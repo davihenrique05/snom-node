@@ -1,4 +1,5 @@
 import { IGetUserFilter } from "../interface/IGetUserFilter";
+import { Permission } from "../model/Permission";
 import { User } from "../model/User";
 import { UserRepository } from "../repository/UserRepository";
 
@@ -35,9 +36,10 @@ export abstract class UserService {
         user.isUserActive = true;
         user.experience = 0;
         user.icon = "user_pic001";
-        user.permission_id = 3;
+        user.permission = new Permission();
+        user.permission.id = 3;
 
-        return UserRepository.save(user);
+        return UserRepository.insert(user);
     };
 
     public static deleteUser() :void{};
