@@ -73,6 +73,7 @@ __decorate([
 ], User.prototype, "icon", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(type => Permission_1.Permission, permission => permission.users, { eager: true }),
+    (0, typeorm_1.JoinColumn)({ name: 'permission_id' }),
     __metadata("design:type", Permission_1.Permission)
 ], User.prototype, "permission", void 0);
 User = __decorate([
