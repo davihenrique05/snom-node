@@ -40,7 +40,14 @@ export class UserController {
         }
     }
 
-    async deleteUser(req: Request, res: Response) {
-        return res.send('teste');
+    async deleteUser(req: TypedRequestBody<Partial<User>>, res: Response) {
+        try{
+            await UserService.deleteUser(req.body);
+            res.sendStatus(200);
+        }catch(err){
+            console.log(err);
+            res.statusCode = 404;
+            res.send(defaultError({}));
+        }
     }
 }

@@ -42,6 +42,10 @@ export abstract class UserService {
         return UserRepository.insert(user);
     };
 
-    public static deleteUser() :void{};
+    public static deleteUser(user : Partial<User>) {
+        if(!user.id) throw new Error();
+
+        return UserRepository.delete(user);
+    };
 
 }
