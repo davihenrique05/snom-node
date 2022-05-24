@@ -40,7 +40,11 @@ class UserService {
         return UserRepository_1.UserRepository.insert(user);
     }
     ;
-    static deleteUser() { }
+    static deleteUser(user) {
+        if (!user.id)
+            throw new Error();
+        return UserRepository_1.UserRepository.delete(user);
+    }
     ;
 }
 exports.UserService = UserService;

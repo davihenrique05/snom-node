@@ -54,7 +54,15 @@ class UserController {
     }
     deleteUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            return res.send('teste');
+            try {
+                yield UserService_1.UserService.deleteUser(req.body);
+                res.sendStatus(200);
+            }
+            catch (err) {
+                console.log(err);
+                res.statusCode = 404;
+                res.send((0, ErrorMessage_1.defaultError)({}));
+            }
         });
     }
 }
