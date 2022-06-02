@@ -35,7 +35,7 @@ export abstract class UserService {
         user.level = 1;
         user.isUserActive = true;
         user.experience = 0;
-        user.icon = "user_pic001";
+        user.icon = "/img/profile/level1.svg";
         user.permission = new Permission();
         user.permission.id = 3;
 
